@@ -25,3 +25,13 @@ cd ~/drone_ws
 rm -rf build install log
 colcon build
 source install/setup.bash
+
+
+/*上传到github*/
+cd ~/drone_ws/src
+git add .
+git commit -m "Updated code and fixed git submodule issue"
+git push
+
+/*启动Mavros节点*/
+ros2 run mavros mavros_node --ros-args -p fcu_url:=serial:///dev/ttyACM0:57600 -p fcu_protocol:=v2.0
