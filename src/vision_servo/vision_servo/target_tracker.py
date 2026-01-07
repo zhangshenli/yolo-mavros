@@ -286,13 +286,10 @@ def main(args=None):
             while rclpy.ok():
                 if node.current_state.mode == "OFFBOARD":
                     # 因为是位置控制，我们不需要担心过冲，直接判断是否接近
-                    if abs(node.current_z_height - node.target_height) < 0.15:
+                    if abs(node.current_z_height - node.target_height) < 0.35:
                         print("\n>>> [3/4] 已到达预定高度 <<<")
                         break
-                time.sleep(0.2)
 
-            print(">>> 悬停 3 秒...")
-            time.sleep(1) # 这里改小了一点，3秒也可以
             
             print("\n>>> [4/4] 视觉追踪已激活！ <<<")
             node.enable_tracking = True

@@ -18,9 +18,14 @@ setup(
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
+    
+    # === 重点修改这里 ===
     entry_points={
         'console_scripts': [
+            
             'tracker = vision_servo.target_tracker:main',
+            
+            'takeoff = vision_servo.takeoff:main',
         ],
     },
 )
