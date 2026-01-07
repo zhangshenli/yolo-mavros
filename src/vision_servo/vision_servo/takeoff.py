@@ -76,9 +76,6 @@ class SimpleHover(Node):
 
     # --------- 核心控制逻辑 (20Hz) ---------
     def cmd_timer_callback(self):
-        # 安全锁：如果不小心切到了手动模式，这里停止发送指令(或者发空指令)，防止冲突
-        if self.current_state.mode != "OFFBOARD":
-            return
 
         # 构建混合控制消息
         msg = PositionTarget()
